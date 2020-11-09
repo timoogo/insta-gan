@@ -1,11 +1,11 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-from time import sleep
-# some_file.py
 import sys
-# insert at 1, 0 is the script path (or '' in REPL)
 sys.path.insert(1, 'app/')
 import secret, variables
+from selenium.webdriver.support.ui import Select
+from time import sleep
+
 
 class InstagramBot:
     def __init__(self, username, password):
@@ -17,7 +17,7 @@ class InstagramBot:
         bot           = self.bot
         bot.get(secret._create_account_url)
         bot.find_element_by_xpath(variables.disable_popup).click()
-        sleep(3)
+        sleep(1)
         # form
         bot.find_element_by_xpath(variables.c_mail).send_keys(secret._mail) #mail
         sleep(1)
@@ -25,9 +25,13 @@ class InstagramBot:
         sleep(1)
         bot.find_element_by_xpath(variables.c_username).send_keys(secret._username) #username
         sleep(1)
-        bot.find_element_by_xpath(variables.c_pass).send_keys(secret._pass) #pass
-        bot.find_element_by_xpath(variables.c_btn).click() ##doudle # pour ne pas créer tant que je n'ai pas fait la suite 
-
+        bot.find_element_by_xpath(variables.c_pass).send_keys(secret._pass +Keys.RETURN) #pass
+        
+        # exeptions #
+        # select_year = Select(bot.find_element_by_xpath("/html/body/div[1]/section/main/div/article/div/div[1]/div/div[4]/div/div/span/span[3]/select"))
+        # select_year.select_by_index(21)
+        # sleep(2)
+       
 
     #url, mail, pass
     def accessToTheMail(self):
@@ -40,15 +44,15 @@ class InstagramBot:
         sleep(2)
         bot.find_element_by_xpath(variables.m_mail_pass).send_keys(secret._pass + Keys.RETURN)
         sleep(3)
-        bot.find_element_by_xpath(variables.m_tab_rs).click()
-        bot.find_element_by_xpath("//*[contains(text(), 'Instagram')]")
-        sleep(1)
+        # bot.find_element_by_xpath("//*[@id='gs_lc50']/input[1]").send_keys("instagram" + Keys.RETURN)
+        # bot.find_element_by_xpath('//div[contains(text(), "{0}") and @class="inner"]'.format(text)).click()
 
 
 
 
 
 insta = InstagramBot(secret._mail, secret._pass)
-#insta.createAccount()
-insta.accessToTheMail()
+insta.createAccount()
+sleep(3)
+#insta.accessToTheMail()
 
