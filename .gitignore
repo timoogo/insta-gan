@@ -1,2 +1,3 @@
 *.DS_STORE
 app/___secret.py
+app/assets/__pycache__/*
