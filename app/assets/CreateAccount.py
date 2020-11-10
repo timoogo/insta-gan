@@ -25,8 +25,9 @@ class InstagramBot:
         sleep(1)
         bot.find_element_by_xpath(variables.c_username).send_keys(secret._username) #username
         sleep(1)
-        bot.find_element_by_xpath(variables.c_pass).send_keys(secret._pass +Keys.RETURN) #pass
-        
+        bot.find_element_by_xpath(variables.c_pass).send_keys(secret._pass) #pass
+        sleep(1)
+        bot.find_element_by_xpath("//input[@type='submit'").click()
         # exeptions #
         # select_year = Select(bot.find_element_by_xpath("/html/body/div[1]/section/main/div/article/div/div[1]/div/div[4]/div/div/span/span[3]/select"))
         # select_year.select_by_index(21)
@@ -50,9 +51,22 @@ class InstagramBot:
 
 
 
-
+    def login(self, mail, passw):
+        bot           = self.bot
+        bot.get('https://www.instagram.com/accounts/login')
+        bot.find_element_by_xpath('/html/body/div[2]/div/div/div/div[2]/button[1]').click()
+        sleep(1)
+        bot.find_element_by_name('username').send_keys(mail)
+        bot.find_element_by_name('password').send_keys(passw + Keys.RETURN)
+        sleep(3)
+        bot.find_element_by_xpath(("/html/body/div[1]/section/main/div/div/div/div/button"))\
+        .click()
+        sleep(2)
+        bot.find_element_by_xpath(("/html/body/div[4]/div/div/div/div[3]/button[2]"))\
+        .click()
+        
 insta = InstagramBot(secret._mail, secret._pass)
-insta.createAccount()
-sleep(3)
+#insta.createAccount()
 #insta.accessToTheMail()
 
+insta.login(secret._mail, secret._pass)
