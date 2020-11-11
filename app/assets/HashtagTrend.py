@@ -40,6 +40,9 @@ class External:
         h.write(now)
         h.write(textstr)
         h.close()
+        
+        
+        
     def Quit(self):
         bot = self.bot
         print("fin de process")
