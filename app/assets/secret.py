@@ -1,4 +1,6 @@
-_driverPath = '/Users/timogo/Sites/insta-gan/app/assets/chromedriver'
+# _driverPath = '/Users/timogo/Sites/insta-gan/app/assets/chromedriver'
+_driverPath = 'D:/IIM_A2/dev_web/perso/insta-gan/app/assets/chromedriver'
+
 
 _mail_url ='https://mail.google.com/mail/'
 _mail = 'insta.gan.2.0@gmail.com'

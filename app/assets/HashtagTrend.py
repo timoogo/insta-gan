@@ -5,13 +5,15 @@ import secret
 from time import sleep, ctime
 
 from selenium.webdriver.support.ui import Select
-pathtoaccess = "/Users/timogo/Sites/insta-gan/app/assets/BestHashtagsOfTheDate/"
+# pathtoaccess = "/Users/timogo/Sites/insta-gan/app/assets/BestHashtagsOfTheDate/"
+pathtoaccess = "D:/IIM_A2/dev_web/perso/insta-gan/app/assets/BestHashtagsOfTheDate/"
+
 temp_txt = "tagList.txt"
 filetmp = pathtoaccess + temp_txt
 now = str("Dernière MAJ : %s" % ctime()) + "\n"
 class External:
     def __init__(self):
-        self.bot      = webdriver.Chrome(executable_path=secret._driverPath)
+        self.bot = webdriver.Chrome(executable_path = secret._driverPath)
     
     def fileToWriteOn(self, file, c):
 
